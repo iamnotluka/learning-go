@@ -217,6 +217,12 @@ func main() {
 	// Receiver functions
 	formatterBill := mybill.format()
 	fmt.Println(formatterBill)
+
+	mybill.updateTip(1)
+	mybill.addItem("item", 3)
+	formatterBill = mybill.format()
+	fmt.Println(formatterBill)
+
 }
 
 func updateNameMem(x *string) {
