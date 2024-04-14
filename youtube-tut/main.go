@@ -150,6 +150,14 @@ func main() {
 	sayBye("Luka")
 	cycleNames([]string{"Luka", "Relja", "Tamara"}, sayGreeting)
 	cycleNames([]string{"Luka", "Relja", "Tamara"}, sayBye)
+
+	sayHello("Mario")
+
+	for _, v := range points {
+		fmt.Println(v)
+	}
+
+	showScore()
 }
 
 func sayGreeting(n string) {
