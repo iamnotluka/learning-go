@@ -186,18 +186,33 @@ func main() {
 	phonebook[1] = "luka_changed"
 	fmt.Println(phonebook)
 
-	// 1 group variables: Strings, ints, floats, booleans, arrays and structs
+	// 1 group variables: Strings, ints, floats, booleans, arrays and structs (non-pointer values)
 	luka_name := "luka"
 
 	luka_name = updateName(luka_name)
 
 	fmt.Println(luka_name)
 
-	// 2 group variables: Slices, maps, functions
+	// 2 group variables: Slices, maps, functions (pointer values)
 	fmt.Println(menu)
 	updateMenu(menu)
 	fmt.Println(menu)
 
+	// POINTERS
+	pointer_demo := "pointer_demo"
+	fmt.Println(&pointer_demo)
+	fmt.Println(pointer_demo)
+
+	pointer_demo_mem := &pointer_demo
+
+	updateNameMem(pointer_demo_mem)
+
+	fmt.Println(pointer_demo)
+
+}
+
+func updateNameMem(x *string) {
+	*x = "updated_name_in_memory"
 }
 
 func updateMenu(x map[string]float64) {
