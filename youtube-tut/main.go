@@ -134,6 +134,34 @@ func main() {
 
 	fmt.Println(names)
 
-	// BOOLEANS
-	
+	// BOOLEANS <= >= == !=
+	condition1 := 30 < 40
+	condition2 := 30 == 40
+
+	if (condition1) {
+		fmt.Println("condition1 is true")
+	} else if !condition2 {
+		fmt.Println("condition2 is true")
+	} else {
+		fmt.Println("This runs if condition 1 and 2 are false.")
+	}
+
+	sayGreeting("Luka")
+	sayBye("Luka")
+	cycleNames([]string{"Luka", "Relja", "Tamara"}, sayGreeting)
+	cycleNames([]string{"Luka", "Relja", "Tamara"}, sayBye)
+}
+
+func sayGreeting(n string) {
+	fmt.Printf("Good morning %v\n", n)
+}
+
+func sayBye(n string) {
+	fmt.Printf("Bye %v\n", n)
+}
+
+func cycleNames(n []string, f func(string)) {
+	for _, value := range n {
+		f(value)
+	}
 }
