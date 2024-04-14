@@ -191,13 +191,14 @@ func main() {
 
 	luka_name := "luka"
 
-	updateName(luka_name)
+	luka_name = updateName(luka_name)
 
 	fmt.Println(luka_name)
 }
 
-func updateName(n string) {
+func updateName(n string) string {
 	n = "n_updated"
+	return n
 }
 
 func sayGreeting(n string) {
