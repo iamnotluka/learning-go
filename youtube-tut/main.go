@@ -187,15 +187,22 @@ func main() {
 	fmt.Println(phonebook)
 
 	// 1 group variables: Strings, ints, floats, booleans, arrays and structs
-	// 2 group variables: Slices, maps, functions
-
 	luka_name := "luka"
 
 	luka_name = updateName(luka_name)
 
 	fmt.Println(luka_name)
+
+	// 2 group variables: Slices, maps, functions
+	fmt.Println(menu)
+	updateMenu(menu)
+	fmt.Println(menu)
+
 }
 
+func updateMenu(x map[string]float64) {
+	x["soup"] = 55
+}
 func updateName(n string) string {
 	n = "n_updated"
 	return n
