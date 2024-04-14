@@ -14,6 +14,10 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
+func Hellos(names []string) (map, error) {
+	messages := make(map[string][string])
+}
+
 
 func randomFormat() string {
 	formats := []string {

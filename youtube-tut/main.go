@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 var someName string = "someName"
 
@@ -94,4 +98,42 @@ func main() {
 	rangeThree := names[:3]
 	fmt.Println(rangeThree)
 
+	greeting := "hi friends!"
+
+	fmt.Println(strings.Contains(greeting, "hi"))
+	fmt.Println(strings.Contains(greeting, "Hi"))
+	fmt.Println(strings.ReplaceAll(greeting, " ", "_"))
+	fmt.Println((strings.ToUpper(greeting)))
+	fmt.Println(strings.Index(greeting, "fr"))
+	fmt.Println(strings.Split(greeting, " "))
+
+	more_ages := []int{12, 15, 16, 2, 50, 20, 60}
+
+	sort.Ints(more_ages)
+	fmt.Println(more_ages)
+
+	more_names := []string{"hello", "hi"}
+
+	fmt.Println(sort.SearchStrings(more_names, "hello"))
+
+	// LOOPS
+	x := 0
+	for x < 5 {
+		fmt.Println("value of x is:", x)
+		x++
+	}
+
+	for i := 0; i < 5; i++ {
+		fmt.Println("value of i is:", i)
+	}
+
+	for index, value := range names {
+		fmt.Printf("the value %v is at index %v\n", index, value)
+		value = "new" // Doesn't update, obtains the value in the new variable
+	}
+
+	fmt.Println(names)
+
+	// BOOLEANS
+	
 }
