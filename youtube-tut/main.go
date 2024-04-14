@@ -208,7 +208,11 @@ func main() {
 	updateNameMem(pointer_demo_mem)
 
 	fmt.Println(pointer_demo)
+	
+	// STRUCT & CUSTOM TYPE
+	mybill := newBill("mario's bill")
 
+	fmt.Println(mybill)
 }
 
 func updateNameMem(x *string) {
