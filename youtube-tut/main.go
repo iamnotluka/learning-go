@@ -213,6 +213,10 @@ func main() {
 	mybill := newBill("mario's bill")
 
 	fmt.Println(mybill)
+
+	// Receiver functions
+	formatterBill := mybill.format()
+	fmt.Println(formatterBill)
 }
 
 func updateNameMem(x *string) {
