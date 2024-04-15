@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -227,7 +228,7 @@ func main() {
 
 	// User input
 	users_bill := createBill()
-	promptOptions(users_bill)
+	promptOptions(&users_bill)
 	fmt.Println(users_bill)
 }
 
@@ -264,7 +265,7 @@ func getInput(prompt string, r *bufio.Reader) (string, error) {
 	return strings.TrimSpace(input), err
 }
 
-func promptOptions(b bill) {
+func promptOptions(b  *bill) {
 	reader := bufio.NewReader(os.Stdin)
 
 	opt, _ := getInput("Choose option (a - add item, s - save bill, t - add tip): ", reader)
@@ -274,12 +275,36 @@ func promptOptions(b bill) {
 		fmt.Println("Adding item...")
 		item, _ := getInput("What's the item name: ", reader)
 		price, _ := getInput("What's the item price: ", reader)
-		fmt.Println("adding tiem", item, "with price", price)
-	case "s":
-		fmt.Println("saving bill")
+
+		p, err := strconv.ParseFloat(price, 64)
+
+		if (err != nil) {
+			fmt.Println("The price must be a number.")
+			promptOptions(b)
+			break
+		}
+
+		b.addItem(item, p)
+
+		fmt.Println("added tiem", item, "with price", price)
+		promptOptions(b)
 	case "t":
 		tip, _ := getInput("What's is the tip: ", reader)
-		fmt.Println("addomg tip", tip)
+
+		t, err := strconv.ParseFloat(tip, 64)
+
+		if (err != nil) {
+			fmt.Println("The tip must be a number.")
+			promptOptions(b)
+			break
+		}
+
+		b.updateTip(t)
+
+		fmt.Println("added tip", tip)
+		promptOptions(b)
+	case "s":
+		fmt.Println("saving bill")
 	default:
 		fmt.Println("Not a valid option")
 		promptOptions(b)
