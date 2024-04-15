@@ -268,7 +268,22 @@ func promptOptions(b bill) {
 	reader := bufio.NewReader(os.Stdin)
 
 	opt, _ := getInput("Choose option (a - add item, s - save bill, t - add tip): ", reader)
-	fmt.Println(opt)
+	
+	switch opt {
+	case "a":
+		fmt.Println("Adding item...")
+		item, _ := getInput("What's the item name: ", reader)
+		price, _ := getInput("What's the item price: ", reader)
+		fmt.Println("adding tiem", item, "with price", price)
+	case "s":
+		fmt.Println("saving bill")
+	case "t":
+		tip, _ := getInput("What's is the tip: ", reader)
+		fmt.Println("addomg tip", tip)
+	default:
+		fmt.Println("Not a valid option")
+		promptOptions(b)
+	}
 }
 
 func createBill() bill {
