@@ -6,11 +6,18 @@ import (
 )
 
 func main() {
+	start := time.Now()
+	defer func() {
+		fmt.Println(time.Since(start))
+	}()
+
 	ninjas := []string{"Luka", "Relja", "Tamara", "Aleks"}
 
 	for _, ninja := range ninjas {
-		attack(ninja)
+		go attack(ninja)
 	}
+
+	time.Sleep(time.Second)
 }
 
 func attack(target string) {
