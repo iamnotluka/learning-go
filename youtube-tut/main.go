@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"sort"
 	"strings"
 )
@@ -223,6 +225,10 @@ func main() {
 	formatterBill = mybill.format()
 	fmt.Println(formatterBill)
 
+	// User input
+	users_bill := createBill()
+	promptOptions(users_bill)
+	fmt.Println(users_bill)
 }
 
 func updateNameMem(x *string) {
@@ -249,4 +255,29 @@ func cycleNames(n []string, f func(string)) {
 	for _, value := range n {
 		f(value)
 	}
+}
+
+func getInput(prompt string, r *bufio.Reader) (string, error) {
+	fmt.Print(prompt)
+	input, err := r.ReadString('\n')
+
+	return strings.TrimSpace(input), err
+}
+
+func promptOptions(b bill) {
+	reader := bufio.NewReader(os.Stdin)
+
+	opt, _ := getInput("Choose option (a - add item, s - save bill, t - add tip): ", reader)
+	fmt.Println(opt)
+}
+
+func createBill() bill {
+	reader := bufio.NewReader(os.Stdin)
+
+	name, _ := getInput("Create a new bill name: ", reader)
+
+	b := newBill(name)
+	fmt.Println("Created bill -", b.name)
+
+	return b
 }
